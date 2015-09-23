@@ -16,7 +16,7 @@ import java.util.List;
 import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.ResultSetExtractor;
-import org.springframework.jdbc.core.simple.ParameterizedRowMapper;
+import org.springframework.jdbc.core.RowMapper;
 
 import com.taobao.diamond.domain.Page;
 
@@ -49,13 +49,13 @@ public class PaginationHelper<E> {
      * @return
      */
     public Page<E> fetchPage(final JdbcTemplate jt, final String sqlCountRows, final String sqlFetchRows,
-            final Object args[], final int pageNo, final int pageSize, final ParameterizedRowMapper<E> rowMapper) {
+            final Object args[], final int pageNo, final int pageSize, final RowMapper<E> rowMapper) {
         if (pageSize == 0) {
             return null;
         }
 
         // 查询当前记录总数
-        final int rowCount = jt.queryForInt(sqlCountRows, args);
+        final int rowCount = jt.queryForObject(sqlCountRows, args,Integer.class);
 
         // 计算页数
         int pageCount = rowCount / pageSize;

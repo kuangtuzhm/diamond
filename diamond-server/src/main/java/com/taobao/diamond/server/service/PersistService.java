@@ -13,7 +13,7 @@ import org.apache.commons.lang.StringUtils;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.PreparedStatementSetter;
-import org.springframework.jdbc.core.simple.ParameterizedRowMapper;
+import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Service;
 
 import com.taobao.diamond.domain.ConfigInfo;
@@ -43,7 +43,7 @@ public class PersistService {
 
     private static final ConfigInfoRowMapper CONFIG_INFO_ROW_MAPPER = new ConfigInfoRowMapper();
 
-    private static final class ConfigInfoRowMapper implements ParameterizedRowMapper<ConfigInfo> {
+    private static final class ConfigInfoRowMapper implements RowMapper<ConfigInfo> {
         public ConfigInfo mapRow(ResultSet rs, int rowNum) throws SQLException {
             ConfigInfo info = new ConfigInfo();
             info.setId(rs.getLong("id"));

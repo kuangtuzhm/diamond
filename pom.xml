@@ -10,6 +10,7 @@
 	<name>diamond</name>
 
 	<properties>
+		<spring.version>4.2.1.RELEASE</spring.version>
 	</properties>
 
 	<modules>
@@ -17,6 +18,7 @@
 		<module>diamond-sdk</module>
 		<module>diamond-server</module>
 		<module>diamond-utils</module>
+		<module>diamond-server-new</module>
 	</modules>
 
 	<build>
@@ -114,14 +116,24 @@
 				<version>1.1.2</version>
 			</dependency>
 			<dependency>
+			 	<groupId>org.springframework</groupId>
+				<artifactId>spring-core</artifactId>
+			 	<version>${spring.version}</version>
+			</dependency>
+			<dependency>
+			 	<groupId>org.springframework</groupId>
+			 	<artifactId>spring-web</artifactId>
+			 	<version>${spring.version}</version>
+			</dependency>
+			<dependency>
 				<groupId>org.springframework</groupId>
 				<artifactId>spring-jdbc</artifactId>
-				<version>3.1.1.RELEASE</version>
+				<version>${spring.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>org.springframework</groupId>
 				<artifactId>spring-webmvc</artifactId>
-				<version>3.1.1.RELEASE</version>
+				<version>${spring.version}</version>
 			</dependency>
 			
 			<dependency>
